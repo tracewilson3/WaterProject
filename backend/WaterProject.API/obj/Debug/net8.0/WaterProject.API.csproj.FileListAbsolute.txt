@@ -65,3 +65,7 @@
 /Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/obj/Debug/net8.0/WaterProject.API.pdb
 /Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/obj/Debug/net8.0/WaterProject.API.genruntimeconfig.cache
 /Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/obj/Debug/net8.0/ref/WaterProject.API.dll
+/Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/obj/Debug/net8.0/WaterProject.API.sourcelink.json
+/Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/bin/Debug/net8.0/WaterProject.API.staticwebassets.endpoints.json
+/Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/obj/Debug/net8.0/staticwebassets.build.endpoints.json
+/Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/obj/Debug/net8.0/staticwebassets/msbuild.WaterProject.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
