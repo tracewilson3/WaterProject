@@ -69,3 +69,5 @@
 /Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/bin/Debug/net8.0/WaterProject.API.staticwebassets.endpoints.json
 /Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/obj/Debug/net8.0/staticwebassets.build.endpoints.json
 /Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/obj/Debug/net8.0/staticwebassets/msbuild.WaterProject.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+/Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/bin/Debug/net8.0/package-lock.json
+/Users/tracewilson/Desktop/WaterProject/backend/WaterProject.API/bin/Debug/net8.0/package.json

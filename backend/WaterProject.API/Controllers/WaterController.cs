@@ -16,28 +16,33 @@ namespace WaterProject.API.Controllers
                 _waterContext = temp;
             }
             [HttpGet("AllProjects")]
-            public IActionResult GetProjects(int pageHowMany = 5,int pageNum=1)
+            public IActionResult GetProjects(int pageHowMany = 5,int pageNum=1, [FromQuery] List<string>? projectTypes = null)
             {
-                string? favProjType = Request.Cookies["FavoriteProjectType"];
-                Console.WriteLine("~~~~~~~~~~~~COOKIE ~~~~~~~~~~~~~~~ \n"+favProjType);
+                // string? favProjType = Request.Cookies["FavoriteProjectType"];
+                // Console.WriteLine("~~~~~~~~~~~~COOKIE ~~~~~~~~~~~~~~~ \n"+favProjType);
+                //
+                //
+                // HttpContext.Response.Cookies.Append("FavoriteProjectType", "Borehole Well and Hand Pump", 
+                //     new CookieOptions 
+                //     { HttpOnly = true, 
+                //         Secure = true ,
+                //         SameSite = SameSiteMode.Strict,
+                //         Expires = DateTime.Now.AddMinutes(1)
+                //     });
                 
+                var query = _waterContext.Projects.AsQueryable();
+
+                if (projectTypes != null && projectTypes.Any())
+                {
+                    query = query.Where(p => projectTypes.Contains(p.ProjectType));
+                }
                 
-                HttpContext.Response.Cookies.Append("FavoriteProjectType", "Borehole Well and Hand Pump", 
-                    new CookieOptions 
-                    { HttpOnly = true, 
-                        Secure = true ,
-                        SameSite = SameSiteMode.Strict,
-                        Expires = DateTime.Now.AddMinutes(1)
-                    });
-                
-                
-                
-                var something = _waterContext.Projects
+                var something = query
                 .Skip((pageNum-1)*pageHowMany)
                 .Take(pageHowMany)
                 .ToList();
                 
-                var totalNumProjects = _waterContext.Projects.Count();
+                var totalNumProjects = query.Count();
                 var someObject = new
                 {
                     Projects = something,
@@ -45,11 +50,16 @@ namespace WaterProject.API.Controllers
                 };
                 return Ok(someObject);
             }
-            [HttpGet("FunctionalProjects")]
-            public IEnumerable<Project> GetFunctionalProjects()
+
+            [HttpGet("GetProjectTypes")]
+            public IActionResult GetProjectTypes()
             {
-                var something = _waterContext.Projects.Where(p=>p.ProjectFunctionalityStatus=="Functional").ToList();
-                return something;
+                var projectTypes = _waterContext.Projects
+                    .Select(p => p.ProjectType)
+                    .Distinct()
+                    .ToList();
+                
+                return Ok(projectTypes);
             }
     }
 }
